@@ -5,9 +5,9 @@ public class Main {
         String[][] board = createBoard(4);
 
         printBoard(board);
+        // placeQueen(board, 0, 2);
 
-        placeQueen(board, 3, 3);
-        printBoard(board);
+        printBoard(Solve_Board.solveBoard(board));
     }
 
     public static String[][] createBoard(int numb) {
