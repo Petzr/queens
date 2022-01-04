@@ -5,6 +5,9 @@ public class Main {
         String[][] board = createBoard(4);
 
         printBoard(board);
+
+        placeQueen(board, 3, 3);
+        printBoard(board);
     }
 
     public static String[][] createBoard(int numb) {
@@ -31,5 +34,10 @@ public class Main {
                 }
             }
         }
+        System.out.print("\n");
+    }
+
+    public static void placeQueen(String[][] board, int row, int col) {
+        board[row][col] = "Q";
     }
 }
