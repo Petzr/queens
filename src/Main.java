@@ -5,8 +5,8 @@ public class Main {
         String[][] board = createBoard(4);
 
         printBoard(board);
-        // placeQueen(board, 0, 2);
 
+        placeQueen(board, 0, 2);
         printBoard(Solve_Board.solveBoard(board));
     }
 
