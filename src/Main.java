@@ -1,6 +1,17 @@
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
+	    // creating board
+        String[] board = createBoard(4);
+    }
+
+    public static String[] createBoard(int numb) {
+        String[] board = new String[numb];
+
+        for (int i=0; i < board.length; i++) {
+            board[i] = ".";
+        }
+
+        return board;
     }
 }
