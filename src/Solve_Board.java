@@ -18,11 +18,13 @@ public class Solve_Board {
 
     private static boolean checkIfPossible(String[][] board, int row, int col) {
 
+        // checking horizontal
         for (int c=0; c<board.length; c++) {
             if (board[row][c].equals("Q")) {
                 return false;
             }
         }
+        // checking vertical
         for (int r=0; r<board.length; r++) {
             if (board[r][col].equals("Q")) {
                 return false;
@@ -31,15 +33,18 @@ public class Solve_Board {
 
         // a - b
         // 0  1  2  3
-        //-1  0 -2 -3
+        //-1  0  1  2
         //-2 -1  0  1
         //-3 -2 -1  0
+        int x = col - row;
+
 
         // -a - b
         // 0 -1 -2 -3
         //-1 -2 -3 -4
         //-2 -3 -4 -5
         //-3 -4 -5 -6
+        x = col + row;
 
         return true;
     }
