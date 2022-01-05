@@ -1,29 +1,29 @@
 public class Solve_Board {
 
-    public static String[][] solveBoard(String[][] board) {
+    public static String[][] solveBoard(String[][] board, int n) {
 
-        for (int row=0; row<board.length; row++) {
-            for (int col=0; col<board[row].length; col++) {
+        for (int row=0; row < n; row++) {
+            for (int col=0; col < n; col++) {
 
                 if (checkIfPossible(board, row, col)) {
                     Main.placeQueen(board, row, col);
+                } else if (col == n-1) {
+                    row--;
                 }
 
             }
         }
 
-
         return board;
+    }
+
+    public static void checkRow(String[][] board, int row, int n) {
+
+
     }
 
     private static boolean checkIfPossible(String[][] board, int row, int col) {
 
-        // checking horizontal
-        for (int c=0; c<board.length; c++) {
-            if (board[row][c].equals("Q")) {
-                return false;
-            }
-        }
         // checking vertical
         for (int r=0; r<board.length; r++) {
             if (board[r][col].equals("Q")) {

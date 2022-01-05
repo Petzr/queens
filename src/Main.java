@@ -1,13 +1,15 @@
 public class Main {
 
     public static void main(String[] args) {
+
+        int n = 4;
 	    // creating board
-        String[][] board = createBoard(4);
+        String[][] board = createBoard(n);
 
         printBoard(board);
 
         placeQueen(board, 0, 2);
-        printBoard(Solve_Board.solveBoard(board));
+        printBoard(Solve_Board.solveBoard(board, n));
     }
 
     public static String[][] createBoard(int numb) {
