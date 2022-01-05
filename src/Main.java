@@ -6,7 +6,7 @@ public class Main {
 
         printBoard(board);
 
-        placeQueen(board, 3, 3);
+        placeQueen(board, 0, 1);
         printBoard(board);
     }
 
