@@ -8,9 +8,35 @@ public class Main {
 
         printBoard(board);
 
-        placeQueen(board, 0, 1);
-        placeQueen(board, 2, 3);
+        solveBoard(board);
+
         printBoard(board);
+    }
+
+    public static boolean solveBoard(String[][] board) {
+
+        for (int row=0; row<board.length; row++) {
+            for (int col=0; col<board.length; col++) {
+
+                if (isEmpty(board, row, col)) {
+                    if (isValid(board, row, col)) {
+                        placeQueen(board, row, col);
+
+                        if (solveBoard(board)) {
+                            return true;
+                        } else {
+                            board[row][col] = ".";
+                        }
+                    }
+                }
+
+            }
+        }
+        return false;
+    }
+
+    public static boolean isEmpty(String board[][], int row, int col) {
+        return !board[row][col].equals(QUEEN);
     }
 
     public static boolean isValid(String[][] board, int row, int col) {
