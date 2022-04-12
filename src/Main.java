@@ -1,5 +1,7 @@
 public class Main {
 
+    private static final String QUEEN = "Q";
+
     public static void main(String[] args) {
 	    // creating board
         String[][] board = createBoard(4);
@@ -7,7 +9,62 @@ public class Main {
         printBoard(board);
 
         placeQueen(board, 0, 1);
+        placeQueen(board, 2, 3);
         printBoard(board);
+    }
+
+    public static boolean isValid(String[][] board, int row, int col) {
+        return checkRow(board, row) && checkColumn(board, col) &&
+                checkPosDiagonal(board, row, col) && checkNegDiagonal(board, row, col);
+    }
+
+    public static boolean checkRow(String[][] board, int row) {
+        for (int i=0; i<board.length; i++) {
+            if (board[row][i].equals(QUEEN)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean checkColumn(String[][] board, int col) {
+        for (int i=0; i<board.length; i++) {
+            if (board[i][col].equals(QUEEN)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static boolean checkPosDiagonal(String[][] board, int row, int col) {
+        int line = col + row;
+
+        for (int i=0; i< board.length; i++) {
+            for (int j=0; j<board.length; j++) {
+                if (j+i == line) {
+                    if (board[i][j].equals(QUEEN)) {
+                        return false;
+                    }
+                }
+
+            }
+        }
+        return true;
+    }
+
+    public static boolean checkNegDiagonal(String[][] board, int row, int col) {
+        int line = col - row;
+        for (int i=0; i< board.length; i++) {
+            for (int j=0; j<board.length; j++) {
+                if (j-i == line) {
+                    if (board[i][j].equals(QUEEN)) {
+                        return false;
+                    }
+                }
+
+            }
+        }
+        return true;
     }
 
     public static String[][] createBoard(int numb) {
@@ -38,6 +95,6 @@ public class Main {
     }
 
     public static void placeQueen(String[][] board, int row, int col) {
-        board[row][col] = "Q";
+        board[row][col] = QUEEN;
     }
 }
