@@ -1,4 +1,3 @@
-import java.util.Collections;
 
 public class Main {
 
@@ -15,7 +14,7 @@ public class Main {
 
         printBoard(board);
 
-        for (int i=2; i<20; i++) {
+        for (int i=1; i<20; i++) {
             String[][] bigBoard = createBoard(i);
             System.out.println(i);
             printBoard(bigBoard);
@@ -36,7 +35,7 @@ public class Main {
 
                 if (isEmpty(board, row, col)) {
                     if (isValid(board, row, col)) {
-                        placeQueen(board, row, col);
+                        board[row][col] = QUEEN;
 
                         if (solveBoard(board)) {
                             return true;
@@ -62,13 +61,10 @@ public class Main {
             }
         }
 
-        if (count == board.length) {
-            return true;
-        }
-        return false;
+        return count == board.length;
     }
 
-    public static boolean isEmpty(String board[][], int row, int col) {
+    public static boolean isEmpty(String[][] board, int row, int col) {
         return !board[row][col].equals(QUEEN);
     }
 
@@ -120,7 +116,6 @@ public class Main {
                         return false;
                     }
                 }
-
             }
         }
         return true;
@@ -151,9 +146,5 @@ public class Main {
             }
         }
         System.out.print("\n");
-    }
-
-    public static void placeQueen(String[][] board, int row, int col) {
-        board[row][col] = QUEEN;
     }
 }
