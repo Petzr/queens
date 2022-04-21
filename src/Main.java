@@ -1,6 +1,9 @@
+import java.util.Collections;
+
 public class Main {
 
     private static final String QUEEN = "Q";
+//    private static int count = 0;
 
     public static void main(String[] args) {
 	    // creating board
@@ -11,9 +14,22 @@ public class Main {
         solveBoard(board);
 
         printBoard(board);
+
+        for (int i=2; i<20; i++) {
+            String[][] bigBoard = createBoard(i);
+            System.out.println(i);
+            printBoard(bigBoard);
+            solveBoard(bigBoard);
+            printBoard(bigBoard);
+        }
     }
 
     public static boolean solveBoard(String[][] board) {
+
+//        System.out.println(count++);
+        if (solved(board)) {
+            return true;
+        }
 
         for (int row=0; row<board.length; row++) {
             for (int col=0; col<board.length; col++) {
@@ -31,6 +47,23 @@ public class Main {
                 }
 
             }
+        }
+        return false;
+    }
+
+    private static boolean solved(String[][] board) {
+        int count = 0;
+
+        for (int i=0; i<board.length; i++) {
+            for (int j=0; j< board.length; j++) {
+                if (board[i][j].equals(QUEEN)) {
+                    count++;
+                }
+            }
+        }
+
+        if (count == board.length) {
+            return true;
         }
         return false;
     }
